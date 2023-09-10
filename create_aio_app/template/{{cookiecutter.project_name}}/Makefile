@@ -126,3 +126,12 @@ adev: {%- if cookiecutter.use_postgres == 'y' or cookiecutter.use_redis == 'y' %
 wait_resources:
 	python3 -m $(PROJECT_NAME).utils.wait_script
 {%- endif %}
+
+
+REQUIREMENTS_DIR = requirements
+
+compile:
+    pip-compile --output-file=$(REQUIREMENTS_DIR)/development.txt $(REQUIREMENTS_DIR)/development.in
+    pip-compile --output-file=$(REQUIREMENTS_DIR)/documentation.txt $(REQUIREMENTS_DIR)/documentation.in
+    pip-compile --output-file=$(REQUIREMENTS_DIR)/production.txt $(REQUIREMENTS_DIR)/production.in
+

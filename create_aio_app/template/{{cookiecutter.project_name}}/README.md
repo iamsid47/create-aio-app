@@ -60,6 +60,27 @@ Shell inside the running container
 make bash # the command can be executed only if the server is running e.g. after `make run`
 ```
 
+## Managing Dependencies
+
+### Using `.in` Files and `pip-compile`
+
+To manage project dependencies and ensure consistent versions, we use `.in` files and the `pip-compile` tool. This approach allows us to pin package versions and simplify the process of updating dependencies across different environments.
+
+- `development.in`: Development dependencies.
+- `documentation.in`: Documentation dependencies.
+- `production.in`: Production dependencies.
+
+#### Updating Dependencies
+
+1. **Edit `.in` Files**: Open the relevant `.in` file and specify dependencies and version constraints.
+
+2. **Compile Dependencies**: Run `make compile` to generate/update `.txt` files with pinned versions.
+
+3. **Review and Test**: Check the updated `.txt` files for your dependencies.
+
+4. **Commit Changes**: Commit both `.in` and `.txt` files for consistent dependencies across environments.
+
+Using `.in` files simplifies dependency management, ensuring your project stays up-to-date with controlled versions.
 
 ### Upgrade
 To upgrade dependencies:
